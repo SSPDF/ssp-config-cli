@@ -1,13 +1,12 @@
 on: push
 name: Publicar eslint-config para npm
-env:
-  PUBLISH_TOKEN:  ${{ secrets.token }}
 
 jobs:
   publish:
     if: ${{ github.ref == 'refs/heads/main' }}
     name: Publish
     runs-on: ubuntu-latest
+
     steps:
       - name: Copiando projeto
         uses: actions/checkout@v3
@@ -17,6 +16,8 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org
+          always-auth: true
+          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Instalando dependências
         run: npm install
@@ -32,5 +33,3 @@ jobs:
       - name: Publicando pacote no NPM
         run: npm publish --access public
         working-directory: dist
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
