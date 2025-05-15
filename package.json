@@ -1,6 +1,6 @@
 {
     "name": "@ssplib/nest-configx",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "ESLint + Prettier config padrão para apps NestJS com TypeScript",
     "license": "MIT",
     "main": "index.js",
