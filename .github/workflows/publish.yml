@@ -1,0 +1,36 @@
+on: push
+name: Publicar eslint-config para npm
+env:
+  PUBLISH_TOKEN:  ${{ secrets.token }}
+
+jobs:
+  publish:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copiando projeto
+        uses: actions/checkout@v3
+
+      - name: Settando node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+
+      - name: Instalando dependências
+        run: npm install
+
+      - name: Criando pasta dist e copiando arquivos
+        run: |
+          mkdir dist
+          cp lib-package.json dist/package.json
+          cp index.js dist/index.js
+          cp prettier.config.js dist/prettier.config.js
+          cp README.md dist/README.md
+
+      - name: Publicando pacote no NPM
+        run: npm publish --access public
+        working-directory: dist
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
