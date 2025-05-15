@@ -1,0 +1,4 @@
+.npmignore
+README.md
+.eslintrc.js
+.prettierrc
