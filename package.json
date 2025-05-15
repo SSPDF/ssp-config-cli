@@ -1,14 +1,20 @@
 {
-  "name": "@ssplib/nest-configx",
-  "version": "0.0.1",
-  "main": "index.js",
-  "peerDependencies": {
-    "eslint": "^8.0.0",
-    "prettier": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-unused-imports": "^3.0.0",
-    "eslint-plugin-sonarjs": "^0.21.0"
-  }
+    "name": "@ssplib/nest-configx",
+    "version": "0.0.1",
+    "description": "ESLint + Prettier config padrão para apps NestJS com TypeScript",
+    "license": "MIT",
+    "main": "index.js",
+    "files": [
+        "index.js",
+        "prettier.config.js"
+    ],
+    "peerDependencies": {
+        "eslint": "^8.0.0",
+        "prettier": "^3.0.0",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-unused-imports": "^3.0.0",
+        "eslint-plugin-sonarjs": "^0.21.0"
+    }
 }

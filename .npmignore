@@ -1,4 +1,4 @@
+.github/
 .npmignore
 README.md
-.eslintrc.js
-.prettierrc
+publish.yml
