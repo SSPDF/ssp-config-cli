@@ -1,6 +1,6 @@
 {
     "name": "@ssplib/nest-configx",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "ESLint + Prettier config padrão para apps NestJS com TypeScript",
     "license": "MIT",
     "main": "index.js",
@@ -14,7 +14,7 @@
         "@typescript-eslint/eslint-plugin": "^8.0.0",
         "@typescript-eslint/parser": "^8.0.0",
         "eslint-config-prettier": "^9.0.0",
-        "eslint-plugin-unused-imports": "^3.0.0",
+        "eslint-plugin-unused-imports": "^4.1",
         "eslint-plugin-sonarjs": "^0.21.0"
     }
 }
