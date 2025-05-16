@@ -17,10 +17,11 @@ jobs:
                   node-version: 16
                   registry-url: https://registry.npmjs.org
                   always-auth: true
-                  token: ${{ secrets.NPM_TOKEN }}
 
             - name: Instalando dependências
               run: npm install
 
             - name: Publicando para o NPM
               run: npm publish --access public
+              env:
+                NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
