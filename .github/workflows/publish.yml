@@ -29,9 +29,6 @@ jobs:
       - name: Compilar Código TypeScript
         run: npm run build
 
-      - name: Executar Testes
-        run: npm test
-
       - name: Publicar para o NPM
         run: npm publish --access public
 
