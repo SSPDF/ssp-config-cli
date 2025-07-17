@@ -1,27 +1,39 @@
-on: push
-name: Publicar eslint-config para npm
+on:
+  push:
+    branches:
+      - main # Publicar apenas quando houver push na branch 'main'
+
+name: Publicar ssp-nest-cli para NPM
 
 jobs:
-    publish:
-        if: ${{ github.ref == 'refs/heads/main' }}
-        name: Publish
-        runs-on: ubuntu-latest
+  publish:
+    if: ${{ github.ref == 'refs_heads_main' }}
+    name: Publicar Pacote NPM
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Copiando projeto
-              uses: actions/checkout@v3
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
 
-            - name: Configurando Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 16
-                  registry-url: https://registry.npmjs.org
-                  always-auth: true
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+          always-auth: true
+          cache: "npm"
 
-            - name: Instalando dependências
-              run: npm install
+      - name: Instalar Dependências (npm ci)
+        run: npm ci
 
-            - name: Publicando para o NPM
-              run: npm publish --access public
-              env:
-                NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Compilar Código TypeScript
+        run: npm run build # Este comando compila src/ para dist/ e o 'postbuild' copia collection.json
+
+      # - name: Executar Testes # <--- ADIÇÃO: RODAR TESTES ANTES DE PUBLICAR
+      #   run: npm test # Garante que os testes passem antes da publicação
+
+      - name: Publicar para o NPM
+        run: npm publish --access public
+
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

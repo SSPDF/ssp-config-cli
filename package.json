@@ -1,20 +1,43 @@
 {
-    "name": "@ssplib/nest-configx",
-    "version": "0.0.5",
-    "description": "ESLint + Prettier config padrão para apps NestJS com TypeScript",
-    "license": "MIT",
-    "main": "index.js",
-    "files": [
-        "index.js",
-        "prettier.config.js"
-    ],
-    "peerDependencies": {
-        "eslint": "^8.0.0",
-        "prettier": "^3.0.0",
-        "@typescript-eslint/eslint-plugin": "^8.0.0",
-        "@typescript-eslint/parser": "^8.0.0",
-        "eslint-config-prettier": "^9.0.0",
-        "eslint-plugin-unused-imports": "^4.1",
-        "eslint-plugin-sonarjs": "^0.21.0"
-    }
+  "name": "ssp-cli",
+  "version": "0.1.0",
+  "description": "Custom CLI for SSP-DF development standards (Backend NestJS, Frontend Next.js).",
+  "main": "dist/commands/index.js",
+  "bin": {
+    "ssp-cli": "dist/commands/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/commands/index.js",
+    "dev": "ts-node src/commands/index.ts",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write .",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "cli",
+    "ssp-df",
+    "nestjs",
+    "nextjs",
+    "eslint",
+    "prettier",
+    "typescript",
+    "automation"
+  ],
+  "author": "SSP-DF Development Team",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "yargs": "^17.0.0",
+    "@types/yargs": "^17.0.0",
+    "ts-node": "^10.0.0",
+    "@types/fs-extra": "^11.0.0",
+    "fs-extra": "^11.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint-config-prettier": "^8.0.0"
+  }
 }
