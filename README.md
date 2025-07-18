@@ -1,5 +1,5 @@
 ````markdown
-# ssp-config-cli
+# @ssplib/ssp-config-lib
 
 Uma **Interface de Linha de Comando (CLI) customizada** para padronizar e automatizar a configuração de projetos de desenvolvimento de software na SSP-DF, abrangendo tanto aplicações **backend em NestJS** quanto, futuramente, **frontend em Next.js**.
 
@@ -7,20 +7,21 @@ Esta ferramenta visa garantir a consistência das práticas de linting, formata�
 
 ## ✨ Funcionalidades (Atual)
 
-Atualmente, a `ssp-config-cli` oferece o seguinte comando:
+Atualmente, a `@ssplib/ssp-config-lib` oferece o seguinte comando:
 
-* `backend-config`: Configura automaticamente as dependências de ESLint, Prettier e padrões de código para projetos backend NestJS.
+- `backend-config`: Configura automaticamente as dependências de ESLint, Prettier e padrões de código para projetos backend NestJS.
 
 ## 🚀 Instalação
 
-Você pode instalar a `ssp-config-cli` globalmente para usá-la em qualquer lugar do seu sistema, ou localmente em cada projeto onde ela for necessária.
+Você pode instalar a `@ssplib/ssp-config-lib` globalmente para usá-la em qualquer lugar do seu sistema, ou localmente em cada projeto onde ela for necessária.
 
 ### Instalação Global (Recomendado)
 
 ```bash
-npm install -g ssp-config-cli
+npm install -g @ssplib/ssp-config-lib
 # ou
-yarn global add ssp-config-cli
+yarn global add @ssplib/ssp-config-lib
+```
 ````
 
 Após a instalação global, você pode executar a CLI diretamente de qualquer diretório.
@@ -28,13 +29,13 @@ Após a instalação global, você pode executar a CLI diretamente de qualquer d
 ### Instalação Local (como `devDependency`)
 
 ```bash
-npm install -D ssp-config-cli
+npm install -D @ssplib/ssp-config-lib
 # ou
-yarn add -D ssp-config-cli
+yarn add -D @ssplib/ssp-config-lib
 ```
 
 Se instalada localmente, você precisará usar `npx` para executar os comandos:
-`npx ssp-config-cli <comando>`
+`npx @ssplib/ssp-config-lib <comando>`
 
 ## 💡 Uso
 
@@ -47,26 +48,26 @@ Este comando adicionará e configurará automaticamente as dependências de ESLi
 2.  **Execute o comando:**
 
     ```bash
-    ssp-config-cli backend-config
+    @ssplib/ssp-config-lib backend-config
     ```
 
     Opcionalmente, para simular as mudanças sem aplicá-las (útil para testar):
 
     ```bash
-    ssp-config-cli backend-config --skip-install
+    @ssplib/ssp-config-lib backend-config --skip-install
     ```
 
     A flag `--skip-install` também evita que `npm install` seja executado automaticamente.
 
 ## 🛠️ Desenvolvimento
 
-Para contribuir ou desenvolver na `ssp-config-cli` você precisará clonar o repositório e configurar o ambiente:
+Para contribuir ou desenvolver na `@ssplib/ssp-config-lib` você precisará clonar o repositório e configurar o ambiente:
 
 1.  **Clone o repositório:**
 
     ```bash
-    git clone [https://github.com/SEU_USUARIO/ssp-config-cli.git](https://github.com/SEU_USUARIO/ssp-config-cli.git)
-    cd ssp-config-cli
+    git clone [https://github.com/SEU_USUARIO/@ssplib/ssp-config-lib.git](https://github.com/SEU_USUARIO/@ssplib/ssp-config-lib.git)
+    cd @ssplib/ssp-config-lib
     ```
 
 2.  **Instale as dependências de desenvolvimento:**
@@ -86,31 +87,30 @@ Para contribuir ou desenvolver na `ssp-config-cli` você precisará clonar o rep
     Isso compilará o código TypeScript da `src/` para a pasta `dist/`.
 
 4.  **Teste suas alterações localmente (durante o desenvolvimento):**
-    Para testar o comando `ssp-config-cli` localmente sem precisar publicá-lo, você pode usar `npm link` ou gerar um `.tgz`.
+    Para testar o comando `@ssplib/ssp-config-lib` localmente sem precisar publicá-lo, você pode usar `npm link` ou gerar um `.tgz`.
+    - **Usando `npm link` (mais comum para desenvolvimento contínuo):**
 
-      * **Usando `npm link` (mais comum para desenvolvimento contínuo):**
+      ```bash
+      # Na raiz do projeto @ssplib/ssp-config-lib
+      npm link
 
-        ```bash
-        # Na raiz do projeto ssp-config-cli
-        npm link
+      # Na raiz do seu projeto de teste (ex: viva-flor-api)
+      npm link @ssplib/ssp-config-lib
+      ```
 
-        # Na raiz do seu projeto de teste (ex: viva-flor-api)
-        npm link ssp-config-cli
-        ```
+      Agora você pode executar `@ssplib/ssp-config-lib backend-config` no projeto de teste.
 
-        Agora você pode executar `ssp-config-cli backend-config` no projeto de teste.
+    - **Gerando e Instalando um `.tgz` (para simular a publicação):**
 
-      * **Gerando e Instalando um `.tgz` (para simular a publicação):**
+      ```bash
+      # Na raiz do projeto @ssplib/ssp-config-lib
+      npm pack
 
-        ```bash
-        # Na raiz do projeto ssp-config-cli
-        npm pack
+      # Na raiz do seu projeto de teste
+      npm install -D /caminho/completo/para/@ssplib/ssp-config-lib-1.0.0.tgz
+      ```
 
-        # Na raiz do seu projeto de teste
-        npm install -D /caminho/completo/para/ssp-config-cli-1.0.0.tgz
-        ```
-
-        Depois, execute `npx ssp-config-cli backend-config`.
+      Depois, execute `npx ssp-config-lib backend-config`.
 
 ## 🤝 Contribuição
 
@@ -123,5 +123,7 @@ Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](https
 ## ✉️ Contato
 
 Para suporte ou dúvidas, entre em contato com a equipe de desenvolvimento da SSP-DF.
+
+```
 
 ```

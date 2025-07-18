@@ -1,15 +1,16 @@
 {
-  "name": "ssp-cli",
-  "version": "0.1.1",
-  "description": "Custom CLI for SSP-DF development standards (Backend NestJS, Frontend Next.js).",
-  "main": "dist/commands/index.js",
+  "name": "@ssplib/ssp-config-cli",
+  "version": "0.1.2",
+  "description": "Shared configurations library and CLI for SSP-DF development standards (Backend NestJS, Frontend Next.js).",
+  "main": "dist/backend/commands/index.js",
+  "types": "dist/backend/commands/index.d.ts",
   "bin": {
-    "ssp-cli": "dist/commands/index.js"
+    "ssp-config-cli": "dist/backend/commands/index.js"
   },
   "scripts": {
     "build": "tsc",
-    "start": "node dist/commands/index.js",
-    "dev": "ts-node src/commands/index.ts",
+    "start": "node dist/backend/commands/index.js",
+    "dev": "ts-node src/backend/commands/index.ts",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
     "prepublishOnly": "npm run build"
@@ -22,22 +23,60 @@
     "eslint",
     "prettier",
     "typescript",
-    "automation"
+    "automation",
+    "config",
+    "standards"
   ],
   "author": "SSP-DF Development Team",
   "license": "MIT",
+  "files": [
+    "dist/",
+    "package.json"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/backend/commands/index.js",
+      "require": "./dist/backend/commands/index.js",
+      "types": "./dist/backend/commands/index.d.ts"
+    },
+    "./backend/eslint-config": {
+      "import": "./dist/configs/eslint.js",
+      "require": "./dist/configs/eslint.js",
+      "types": "./dist/configs/eslint.d.ts"
+    },
+    "./backend/prettier-config": {
+      "import": "./dist/configs/prettier.js",
+      "require": "./dist/configs/prettier.js",
+      "types": "./dist/configs/prettier.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-unused-imports": "^4.1",
+    "eslint-plugin-sonarjs": "^3.0.4",
+    "typescript": "^5.0.0"
+  },
   "devDependencies": {
     "typescript": "^5.0.0",
-    "@types/node": "^20.0.0",
+    "@types/node": "^24.0.0",
     "yargs": "^17.0.0",
     "@types/yargs": "^17.0.0",
     "ts-node": "^10.0.0",
     "@types/fs-extra": "^11.0.0",
     "fs-extra": "^11.0.0",
-    "eslint": "^8.0.0",
+    "eslint": "^9.0.0",
     "prettier": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
-    "eslint-config-prettier": "^8.0.0"
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint-config-prettier": "^8.0.0",
+    "@types/jest": "^30.0.0",
+    "copyfiles": "^2.4.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.5"
   }
 }

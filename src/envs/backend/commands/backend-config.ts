@@ -1,9 +1,13 @@
 // src/commands/backend-config.ts
-
-import { Arguments, Argv } from "yargs"; // <--- Adicione Argv aqui
+import { Arguments, Argv } from "yargs";
 import * as fs from "fs-extra";
 import * as path from "path";
 import { execSync } from "child_process";
+
+// --- NOVOS IMPORTS ---
+import eslintConfig from "../configs/eslint"; // Importa o objeto de configuração do ESLint
+import prettierConfig from "../configs/prettier"; // Importa o objeto de configuração do Prettier
+// --- FIM DOS NOVOS IMPORTS ---
 
 interface BackendConfigArgs extends Arguments {
   skipInstall?: boolean;
@@ -13,9 +17,7 @@ export const backendConfigCommand = {
   command: "backend-config",
   describe:
     "Configures ESLint, Prettier, and basic standards for NestJS backend projects.",
-  // Mude 'yargs' para 'yargs: Argv'
   builder: (yargs: Argv) => {
-    // <--- MUDANÇA AQUI: Tipagem do parâmetro 'yargs'
     return yargs.options({
       "skip-install": {
         type: "boolean",
@@ -40,7 +42,7 @@ export const backendConfigCommand = {
         "@typescript-eslint/parser": "^8.0.0",
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-unused-imports": "^4.1",
-        "eslint-plugin-sonarjs": "^0.21.0",
+        "eslint-plugin-sonarjs": "^3.0.4",
         typescript: "^5.0.0",
       };
 
@@ -55,43 +57,8 @@ export const backendConfigCommand = {
       );
 
       console.log("Criando/Atualizando .eslintrc.js...");
-      const eslintConfigContent = `
-module.exports = {
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: ['./tsconfig.json'],
-    sourceType: 'module',
-  },
-  plugins: ['@typescript-eslint', 'unused-imports', 'sonarjs'],
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:sonarjs/recommended',
-    'plugin:prettier/recommended',
-  ],
-  root: true,
-  env: {
-    node: true,
-    jest: true,
-  },
-  ignorePatterns: ['dist', 'node_modules', '.eslintrc.js', 'prettier.config.js'],
-  rules: {
-    'require-await': 'error',
-    '@typescript-eslint/require-await': 'error',
-    'unused-imports/no-unused-imports': 'error',
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['warn'],
-    'prettier/prettier': ['error', {
-      singleQuote: true,
-      semi: false,
-      tabWidth: 4,
-      trailingComma: 'all',
-      printWidth: 100,
-    }],
-  },
-};
-`;
+      // Converte o objeto JavaScript em uma string exportável para o arquivo .js
+      const eslintConfigContent = `module.exports = ${JSON.stringify(eslintConfig, null, 2)};`;
       await fs.writeFile(
         path.join(projectRoot, ".eslintrc.js"),
         eslintConfigContent.trim()
@@ -99,15 +66,8 @@ module.exports = {
       console.log("✅ .eslintrc.js criado/atualizado.");
 
       console.log("Criando/Atualizando prettier.config.js...");
-      const prettierConfigContent = `
-module.exports = {
-  singleQuote: true,
-  semi: false,
-  tabWidth: 4,
-  trailingComma: 'all',
-  printWidth: 100,
-};
-`;
+      // Converte o objeto JavaScript em uma string exportável para o arquivo .js
+      const prettierConfigContent = `module.exports = ${JSON.stringify(prettierConfig, null, 2)};`;
       await fs.writeFile(
         path.join(projectRoot, "prettier.config.js"),
         prettierConfigContent.trim()
