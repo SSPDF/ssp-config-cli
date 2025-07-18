@@ -1,6 +1,6 @@
 {
   "name": "ssp-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Custom CLI for SSP-DF development standards (Backend NestJS, Frontend Next.js).",
   "main": "dist/commands/index.js",
   "bin": {
