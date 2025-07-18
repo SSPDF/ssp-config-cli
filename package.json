@@ -1,6 +1,6 @@
 {
   "name": "@ssplib/ssp-config-cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Shared configurations library and CLI for SSP-DF development standards (Backend NestJS, Frontend Next.js).",
   "main": "dist/backend/commands/index.js",
   "types": "dist/backend/commands/index.d.ts",
