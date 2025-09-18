@@ -1,15 +1,20 @@
-````markdown
 # @ssplib/ssp-config-cli
 
 Uma **Interface de Linha de Comando (CLI) customizada** para padronizar e automatizar a configuração de projetos de desenvolvimento de software na SSP-DF, abrangendo tanto aplicações **backend em NestJS** quanto, futuramente, **frontend em Next.js**.
 
 Esta ferramenta visa garantir a consistência das práticas de linting, formatação e outras configurações essenciais em todos os nossos repositórios, utilizando ferramentas como ESLint e Prettier.
 
-## ✨ Funcionalidades (Atual)
+## ✨ Funcionalidades
 
 Atualmente, a `@ssplib/ssp-config-cli` oferece o seguinte comando:
 
 - `backend-config`: Configura automaticamente as dependências de ESLint, Prettier e padrões de código para projetos backend NestJS.
+
+### 🆕 Novidades da v0.1.7:
+- ✅ **Dependências atualizadas**: Jest v30, @types/node v22, yargs v18
+- ✅ **Compatibilidade**: Node.js 22.17.1
+- ✅ **ESLint 9**: Suporte completo ao ESLint v9 com flat config
+- ✅ **Correções**: Resolved dependency conflicts e runtime issues
 
 ## 🚀 Instalação
 
@@ -22,7 +27,6 @@ npm install -g @ssplib/ssp-config-cli
 # ou
 yarn global add @ssplib/ssp-config-cli
 ```
-````
 
 Após a instalação global, você pode executar a CLI diretamente de qualquer diretório.
 
@@ -41,7 +45,7 @@ Se instalada localmente, você precisará usar `npx` para executar os comandos:
 
 ### Configurar Projeto Backend (NestJS)
 
-Este comando adicionará e configurará automaticamente as dependências de ESLint e Prettier no seu projeto NestJS, criando os arquivos `.eslintrc.js` e `prettier.config.js` e ajustando o `package.json`.
+Este comando adicionará e configurará automaticamente as dependências de ESLint e Prettier no seu projeto NestJS, criando os arquivos `eslint.config.js` (ESLint v9 flat config) e `prettier.config.js` e ajustando o `package.json`.
 
 1.  **Navegue até a raiz do seu projeto NestJS**.
 
@@ -107,7 +111,7 @@ Para contribuir ou desenvolver na `@ssplib/ssp-config-cli` você precisará clon
       npm pack
 
       # Na raiz do seu projeto de teste
-      npm install -D /caminho/completo/para/@ssplib/ssp-config-cli-1.0.0.tgz
+      npm install -D /caminho/completo/para/ssplib-ssp-config-cli-0.1.7.tgz
       ```
 
       Depois, execute `npx ssp-config-cli backend-config`.
@@ -123,7 +127,3 @@ Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](https
 ## ✉️ Contato
 
 Para suporte ou dúvidas, entre em contato com a equipe de desenvolvimento da SSP-DF.
-
-```
-
-```

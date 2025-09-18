@@ -1,3 +1,6 @@
 node_modules
 dist
 *.tgz
+
+# Test project (exclude completely from git)
+test-project/
